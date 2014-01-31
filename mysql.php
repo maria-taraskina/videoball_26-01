@@ -16,7 +16,7 @@ class mysql {
 	
 	function mysql(){
 	        $this->name = "MySQL"; 
-		$this->connect_id = mysql_connect("localhost", "root", "hequ3");
+		$this->connect_id = mysql_connect("localhost", "root", "d7SMG9ak");
                 if ( !$this->connect_id ) {
                 
                      print '<h1>Доступ к сайту временно заблокирован</h1>' ;

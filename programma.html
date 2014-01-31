@@ -76,7 +76,10 @@ if ((int)$_GET['sql'] == 1) { print $sql; }
 $res = $GLOBALS['db']->data($sql);
 $channels['programma'] = $res;
 
-if ((int)$_GET['sql'] != 1) { print json_encode($channels); }
+if ((int)$_GET['sql'] != 1) { 
+    $callback = $_GET['callback'];
+    print $callback.'('.json_encode($channels).')'; 
+}
 
 
 

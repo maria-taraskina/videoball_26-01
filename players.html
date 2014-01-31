@@ -1,6 +1,7 @@
 <?php
 require_once "iptv.functions.php";
-$v['players']  =  $GLOBALS['players'];
 
-print json_encode($v);
+$v['players']  =  $GLOBALS['players'];
+$callback = $GET['callback'];
+print $callback.'('. json_encode($v). ')';
 ?>

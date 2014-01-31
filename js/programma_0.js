@@ -10,13 +10,9 @@ var nextChannel = null;
 
 var programListsReady = false;
 
-var host = "http://kizyavka.asuscomm.com:8081/videoballmobile/";
-
 function loadProgrammByCategory(){
-		$.ajax({
-		    url: host+"groups.html?t=ch",
-		    dataType: "jsonp",
-		    success: function(data) {	
+		$.getJSON( "groups.html?t=ch",
+			function(data) {	
 		
 			$("div#programma-groups .loading").hide();
 			if(data.channels){
@@ -59,7 +55,7 @@ function loadProgrammByCategory(){
 					
 				}
 			}			
-		});
+		);
 	
 	
 }
@@ -71,10 +67,8 @@ function loadFullProgrammList(parameters){
 var s1="";
 		programListsReady=false;
 
-		$.ajax({
-		    url: host+"programma.html" + parameters,
-		    dataType: "jsonp",
-		    success: function(data) {
+		$.getJSON( "programma.html" + parameters,
+			function(data) {
 			
 			$("div#list-wrap .loading").hide();
 			programListsReady=true;
@@ -125,7 +119,7 @@ var s1="";
 					}
 			  }
 			}			
-		});	
+		);	
 		
 }
 

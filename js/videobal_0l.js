@@ -4,12 +4,10 @@ var Volume;// = 0;   // Установленная громкость на пл�
 var ChannelRunning = 0;
 
 var restore=false;
-
-var host = "http://kizyavka.asuscomm.com:8081/videoballmobile/";
        
 function checkStatus(){
 	$.ajax({
-						url: host+"dvbs.html?cmd=status" ,
+						url: "dvbs.html?cmd=status" ,
 						dataType: "json",
 						success: function (data) {
 						console.log("DVBS status data: ", data);
@@ -21,12 +19,11 @@ function checkStatus(){
 
 
 function load_players() {
-    if (currentPlayers == undefined) currentPlayers = new Array();
+
+if(currentPlayers == undefined)currentPlayers =  new Array();
 	$(function() {
-	
-/*	
 		// Загрузка медиаплееров
-		$.getJSON( host+"players.html", 
+		$.getJSON( "players.html", 
 			function(data) {
 			    s = '';				
  				$.each(data.players, function(i, item) {
@@ -54,43 +51,6 @@ function load_players() {
 
 			}
 		);
-*/
-
-	    $.ajax({	
-		url: host+"players.html",
-		dataType: "jsonp",
-		success: function(data) {
-			    s = '';				
- 				$.each(data.players, function(i, item) {
-				sel='';
-				if(currentPlayers.length){
-					$.each(currentPlayers, function(k, item) {
-						if(i==Number(item))		sel=" selected=selected ";								
-						});//each end
-					}		
-					s += "<option "+sel+"value='"+ i +"' id='p" + i + "' onclick='SelectPlayer(" + i + ")' >"+item.name+"</option>";			
-				});
-				
-			$("#players").html(s);
-			$( "#players" ).selectmenu( "refresh" );
-			//$( "#players" ).selectmenu( "option", "overlayTheme", "b" );
-
-			$('#players').on('change', function () {
-				var $this = $(this),
-					val   = $this.val();
-					restore=false;
-					SelectPlayer(val);
-			});
-			
-			SelectPlayer(currentPlayers);
-		}
-
-				    
-	    
-	    });
-
-
-
 	});	
 }
 
@@ -108,7 +68,7 @@ function load_players() {
 		url = "run/iptv-" + User + ".json";
 
 		// Загрузка данных по пользователю
- 		$.getJSON( host+url,
+ 		$.getJSON( url,
 			function(data) {
 			    // Если есть вещание показываем кто смотрит
 			    /*if (data.DVBtoIP.cmd == 'play') {
@@ -131,7 +91,7 @@ saveData();
 	
 	function turnOffPlayer(v){
 	$.ajax({
-						url: host+"dune.html?cmd=off&tv=" + v ,
+						url: "dune.html?cmd=off&tv=" + v ,
 						dataType: "json",
 						success: function (data) {
 								$("#playerMonitor").html( "<b>Статус:</b> " + data.player_state + "<br>" );
@@ -158,7 +118,7 @@ saveData();
 	
 	function turnOnPlayer(v){
 	$.ajax({
-						url: host+"dune.html?cmd=play&u=" + User + "&tv=" + v ,
+						url: "dune.html?cmd=play&u=" + User + "&tv=" + v ,
 						dataType: "json",
 						success: function (data) {
 						
@@ -302,7 +262,7 @@ $('#user-nc').on('change', function () {
 function volumeUp(){
 	for (c in currentPlayers){	
 				$.ajax({
-					url: host+"dune.html?cmd=volume_up&tv=" + currentPlayers[c] ,
+					url: "dune.html?cmd=volume_up&tv=" + currentPlayers[c] ,
 					dataType: "json",
 					success: function (data) {									
 					}
@@ -323,7 +283,7 @@ $( document ).on( "vmousedown", "div.controls #down", function() {
 function volumeDown(){
 	for (c in currentPlayers){	
 				$.ajax({
-					url: host+"dune.html?cmd=volume_down&tv=" + currentPlayers[c] ,
+					url: "dune.html?cmd=volume_down&tv=" + currentPlayers[c] ,
 					dataType: "json",
 					success: function (data) {									
 					}
@@ -356,7 +316,7 @@ $("a#mute").click(function(){
 	
 	for (c in currentPlayers){	
 	$.ajax({
-			url: host+"dune.html?cmd=mute&tv=" + currentPlayers[c] ,
+			url: "dune.html?cmd=mute&tv=" + currentPlayers[c] ,
 			dataType: "json",
 			success: function (data) {									
 			}
