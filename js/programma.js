@@ -10,7 +10,9 @@ var nextChannel = null;
 
 var programListsReady = false;
 
-var host = "http://kizyavka.asuscomm.com:8081/videoballmobile/";
+//var host = "http://kizyavka.asuscomm.com:8081/videoballmobile/";
+var host = "http://vit.allgroup.ru:8081/videoballmobile/";
+
 
 function loadProgrammByCategory(){
 		$.ajax({

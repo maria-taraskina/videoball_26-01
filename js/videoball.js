@@ -5,7 +5,10 @@ var ChannelRunning = 0;
 
 var restore=false;
 
-var host = "http://kizyavka.asuscomm.com:8081/videoballmobile/";
+//var host = "http://kizyavka.asuscomm.com:8081/videoballmobile/";
+var host = "http://vit.allgroup.ru:8081/videoballmobile/";
+
+
        
 function checkStatus(){
 	$.ajax({
